@@ -96,8 +96,10 @@ public class Company {
 
         try {
             while ((line = buffRead.readLine()) != null) {
-                lines[i] = line;
-                i++;
+                if (!line.equals("")) {
+                    lines[i] = line;
+                    i++;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,10 +108,13 @@ public class Company {
     }
 
     private int getNbLines(String name) {
-        Path path = Paths.get(name);
         long lines = 0;
-        try {
-            lines = Files.lines(path).count();
+        String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
+            while ((line = reader.readLine()) != null)
+                if (!line.equals("")) {
+                    lines++;
+                }
         } catch (IOException e) {
             e.printStackTrace();
         }

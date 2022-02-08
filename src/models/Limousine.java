@@ -8,4 +8,14 @@
 package models;
 
 public class Limousine {
+    
+    private final String plate;
+    private final double fuelCapacity;
+    private final String color;
+
+    public Limousine(String plate, double fuelCapacity, String color) {
+        this.plate = plate;
+        this.fuelCapacity = fuelCapacity;
+        this.color = color;
+    }
 }

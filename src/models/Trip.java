@@ -8,4 +8,20 @@
 package models;
 
 public class Trip {
+
+    private final String id;
+    private final String departureCity;
+    private final String arrivalCity;
+    private final int startKm;
+    private final int endKm;
+    private final String plate;
+
+    public Trip(String id, String departureCity, String arrivalCity, int startKm, int endKm, String plate) {
+        this.id = id;
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
+        this.startKm = startKm;
+        this.endKm = endKm;
+        this.plate = plate;
+    }
 }

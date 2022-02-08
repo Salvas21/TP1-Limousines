@@ -24,7 +24,7 @@ public class Company {
 
     private String[] driversLines;
     private String[] limosLines;
-    private String[] tripLines;
+    private String[] tripsLines;
 
     private DriverArray drivers;
     private LimoArray limos;
@@ -54,29 +54,41 @@ public class Company {
     private void readFiles() {
         driversLines = readFileLines(driversFilePath);
         limosLines = readFileLines(limosFilePath);
-        tripLines = readFileLines(tripFilePath);
+        tripsLines = readFileLines(tripFilePath);
     }
 
     private void createModels() {
         createDrivers();
         createLimousines();
-        createRides();
+        createTrips();
     }
 
     private void createDrivers() {
         drivers = new DriverArray(driversLines.length);
-        for (int i = 0; i < driversLines.length; i++) {
-            String[] vars = driversLines[i].split("\t");
+        for (String driversLine : driversLines) {
+            String[] vars = splitString(driversLine);
             drivers.append(new Driver(vars[0], vars[1], vars[2], vars[3]));
         }
     }
 
     private void createLimousines() {
         limos = new LimoArray(limosLines.length);
+        for (String limosLine : limosLines) {
+            String[] vars = splitString(limosLine);
+            limos.append(new Limousine(vars[0], Double.parseDouble(vars[1]), vars[2]));
+        }
     }
 
-    private void createRides() {
-        trips = new TripArray(tripLines.length);
+    private void createTrips() {
+        trips = new TripArray(tripsLines.length);
+        for (String tripsLine : tripsLines) {
+            String[] vars = splitString(tripsLine);
+            trips.append(new Trip(vars[0], vars[1], vars[2], Integer.parseInt(vars[3]), Integer.parseInt(vars[4]), vars[5]));
+        }
+    }
+
+    private String[] splitString(String s) {
+        return s.split("\t");
     }
 
     private String[] readFileLines(String filePath) {

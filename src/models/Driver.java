@@ -21,6 +21,7 @@ public class Driver {
         this.firstName = firstName;
         this.yearEmployment = yearEmployment;
         this.address = address;
+//        this.driverId = "bob";
         this.driverId = generateDriverId();
     }
 
@@ -29,7 +30,7 @@ public class Driver {
         id.append(lastName.substring(0, 3));
         id.append(firstName.charAt(0));
         id.append(yearEmployment.substring(yearEmployment.length() - 2));
-        return driverId.toString();
+        return id.toString();
     }
 
 }

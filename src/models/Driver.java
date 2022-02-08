@@ -1,7 +1,7 @@
 /**
  * File : Driver.java
  * Created : Dimanche 6 février
- * Contributors : Mickael Salvas
+ * Contributors : Mickael Salvas, Xavier Loiselle
  * Description : Classe représentant un Chauffeur
  */
 
@@ -13,6 +13,7 @@ public class Driver {
     private final String firstName;
     private final String yearEmployment;
     private final String address;
+    private final String driverId;
 
     public Driver(String lastName, String firstName, String yearEmployment, String address) {
 
@@ -20,6 +21,15 @@ public class Driver {
         this.firstName = firstName;
         this.yearEmployment = yearEmployment;
         this.address = address;
+        this.driverId = generateDriverId();
+    }
+
+    private String generateDriverId() {
+        StringBuilder id = new StringBuilder();
+        id.append(lastName.substring(0, 3));
+        id.append(firstName.charAt(0));
+        id.append(yearEmployment.substring(yearEmployment.length() - 2));
+        return driverId.toString();
     }
 
 }

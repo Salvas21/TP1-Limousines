@@ -1,11 +1,11 @@
 /**
- * File : Limousine.java
+ * File : Trip.java
  * Created : Dimanche 6 février
  * Contributors : Mickael Salvas, Xavier Loiselle
- * Description : Classe représentant une limousine
+ * Description : Classe représentant un trajet
  */
 
 package models;
 
-public class Limousine {
+public class Trip {
 }

@@ -1,7 +1,7 @@
 /**
  * File : Company.java
  * Created : Dimanche 6 février
- * Contributors : Mickael Salvas
+ * Contributors : Mickael Salvas, Xavier Loiselle
  * Description : C'est la classe qui contient toute la logique de la compagnie AutodeLuxe
  */
 
@@ -24,7 +24,7 @@ public class Company {
 
     private Driver[] drivers;
     private Limousine[] limousines;
-    private Ride[] rides;
+    private Trip[] trips;
 
     public Company(String[] filePaths) {
         driversFilePath = filePaths[0];

@@ -33,4 +33,15 @@ public class Driver {
         return id.toString();
     }
 
+    public String getDriverId() {
+        return driverId;
+    }
+
+    public String getYearEmployment() {
+        return yearEmployment;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
 }

@@ -41,7 +41,14 @@ public class Driver {
         return yearEmployment;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", yearEmployment='" + yearEmployment + '\'' +
+                ", address='" + address + '\'' +
+                ", driverId='" + driverId + '\'' +
+                '}';
     }
 }

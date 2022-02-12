@@ -7,7 +7,9 @@
 
 package models.arrays;
 
+import exceptions.InvalidFormatException;
 import models.Driver;
+import utils.IntegerParser;
 
 public class DriverArray {
 
@@ -19,28 +21,18 @@ public class DriverArray {
         nbElements = 0;
     }
 
-    private int intParsing(String elementToParse) {
-        try {
-            return Integer.parseInt(elementToParse);
-        } catch (NumberFormatException e) {
-            //TODO : do something about exceptions
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
     public void append(Driver driver) {
         drivers[nbElements++] = driver;
     }
 
-    public void sort() {
+    public void sort() throws InvalidFormatException {
         int size = drivers.length;
 
         for (int gap = size/2; gap > 0; gap /= 2) {
             for (int i = gap; i < size; i++) {
                 Driver tempDriver = drivers[i];
                 int j;
-                for (j = i; j >= gap && intParsing(drivers[j - gap].getYearEmployment()) > intParsing(tempDriver.getYearEmployment()); j -= gap ) {
+                for (j = i; j >= gap && IntegerParser.parse(drivers[j - gap].getYearEmployment()) > IntegerParser.parse(tempDriver.getYearEmployment()); j -= gap ) {
                     drivers[j] = drivers[j -gap];
                 }
                 drivers[j] = tempDriver;
@@ -59,14 +51,5 @@ public class DriverArray {
             }
         }
         return -1;
-    }
-
-    public void display() {
-        for (Driver driver: drivers) {
-            System.out.println("Prénom:"+driver.getFirstName());
-            System.out.println("Année d'embauche:"+driver.getYearEmployment());
-            System.out.println();
-        }
-        System.out.println("===========");
     }
 }

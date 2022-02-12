@@ -9,6 +9,7 @@ package models;
 
 import exceptions.InvalidFilePathException;
 import exceptions.InvalidFilesException;
+import exceptions.InvalidFormatException;
 import models.arrays.DriverArray;
 import models.arrays.LimoArray;
 import models.arrays.TripArray;
@@ -46,7 +47,7 @@ public class Company {
         }
     }
 
-    public void start() throws IOException {
+    public void start() throws IOException, InvalidFormatException {
         readFiles();
         createModels();
         sortModels();
@@ -128,7 +129,7 @@ public class Company {
         return (int)lines;
     }
 
-    private void sortModels() {
+    private void sortModels() throws InvalidFormatException {
         drivers.sort();
         limos.sort();
         trips.sort();

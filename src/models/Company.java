@@ -40,6 +40,7 @@ public class Company {
         if (validateFilePaths()) {
             readFiles();
             createModels();
+            sortModels();
             //menu
         }
     }
@@ -131,5 +132,11 @@ public class Company {
             e.printStackTrace();
         }
         return (int)lines;
+    }
+
+    private void sortModels() {
+        drivers.sort();
+        limos.sort();
+        trips.sort();
     }
 }

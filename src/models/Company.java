@@ -46,7 +46,7 @@ public class Company {
         }
     }
 
-    public void start() {
+    public void start() throws IOException {
         readFiles();
         createModels();
         sortModels();
@@ -60,7 +60,7 @@ public class Company {
         return Files.exists(d) && Files.exists(l) && Files.exists(r);
     }
 
-    private void readFiles() {
+    private void readFiles() throws IOException {
         driversLines = readFileLines(driversFilePath);
         limosLines = readFileLines(limosFilePath);
         tripsLines = readFileLines(tripFilePath);
@@ -100,44 +100,30 @@ public class Company {
         return s.split("\t");
     }
 
-    private String[] readFileLines(String filePath) {
-        FileReader reader = null;
-        try {
-            reader = new FileReader(filePath);
-        } catch (FileNotFoundException e) {
-            //TODO : do something about exceptions
-            e.printStackTrace();
-        }
-
-        assert reader != null;
-        BufferedReader buffRead = new BufferedReader(reader);
+    private String[] readFileLines(String filePath) throws IOException {
+        FileReader r = new FileReader(filePath);
+        BufferedReader buffRead = new BufferedReader(r);
         String[] lines = new String[getNbLines(filePath)];
         int i = 0;
         String line;
 
-        try {
-            while ((line = buffRead.readLine()) != null) {
-                if (!line.equals("")) {
-                    lines[i] = line;
-                    i++;
-                }
+        while ((line = buffRead.readLine()) != null) {
+            if (!line.equals("")) {
+                lines[i] = line;
+                i++;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return lines;
     }
 
-    private int getNbLines(String name) {
+    private int getNbLines(String name) throws IOException {
         long lines = 0;
         String line;
-        try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
-            while ((line = reader.readLine()) != null)
-                if (!line.equals("")) {
-                    lines++;
-                }
-        } catch (IOException e) {
-            e.printStackTrace();
+        BufferedReader reader = new BufferedReader(new FileReader(name));
+        while ((line = reader.readLine()) != null) {
+            if (!line.equals("")) {
+                lines++;
+            }
         }
         return (int)lines;
     }

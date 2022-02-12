@@ -7,6 +7,8 @@
 
 package models;
 
+import exceptions.InvalidFilePathException;
+import exceptions.InvalidFilesException;
 import models.arrays.DriverArray;
 import models.arrays.LimoArray;
 import models.arrays.TripArray;
@@ -30,19 +32,25 @@ public class Company {
     private LimoArray limos;
     private TripArray trips;
 
-    public Company(String[] filePaths) {
+    public Company(String[] filePaths) throws InvalidFilesException, InvalidFilePathException {
+        if (filePaths.length != 3) {
+            throw new InvalidFilesException("Number of files required is 3, amount supplied : " + filePaths.length + ".");
+        }
+
         driversFilePath = filePaths[0];
         limosFilePath = filePaths[1];
         tripFilePath = filePaths[2];
+
+        if (!validateFilePaths()) {
+            throw new InvalidFilePathException("One or more file path is invalid.");
+        }
     }
 
     public void start() {
-        if (validateFilePaths()) {
-            readFiles();
-            createModels();
-            sortModels();
-            //menu
-        }
+        readFiles();
+        createModels();
+        sortModels();
+        //menu
     }
 
     private boolean validateFilePaths() {

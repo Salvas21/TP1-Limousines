@@ -1,3 +1,10 @@
+/**
+ * File : TripArray.java
+ * Created : Mardi 8 février
+ * Contributors : Xavier Loiselle, Pierik Landry
+ * Description : Classe représentant un tableau de Trajets ainsi que la logique s'y rattachant
+ */
+
 package models.arrays;
 
 import models.Trip;

@@ -18,6 +18,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
+
+import utils.IntegerParser;
 
 public class Company {
 
@@ -52,6 +55,61 @@ public class Company {
         createModels();
         sortModels();
         //menu
+        mainMenu();
+    }
+
+    private void mainMenu() {
+        int option = 0;
+        do {
+            printMenu();
+            option = readUserInput();
+            if (option < 1 || option > 3) {
+                System.out.println("Option invalide.");
+            }
+            executeOption(option);
+        } while (option != 3);
+    }
+
+    private void executeOption(int option) {
+        if (option == 1) {
+            showDriversLimos(askDriverId());
+        }
+
+        if (option == 2) {
+            // ???
+        }
+    }
+
+    private String askDriverId() {
+        System.out.print("Veuillez entrer le numero du conducteur: ");
+        return new Scanner(System.in).nextLine();
+    }
+
+    private void showDriversLimos(String driverId) {
+//        for(int i = 0; i < limos.length(); i++) {
+//            if (limos.getAt(i).) {
+//                System.out.println(limos.getAt(i).toString());
+//            }
+//        };
+    }
+
+    private int readUserInput() {
+        System.out.print("Option: ");
+        int option = 0;
+        try {
+            option = IntegerParser.parse(new Scanner(System.in).nextLine());
+        } catch (exceptions.InvalidFormatException e) {
+            e.printStackTrace();
+        }
+        return option;
+    }
+
+    private void printMenu() {
+        System.out.println();
+        System.out.println("Menu principal");
+        System.out.println("1. Trouver toutes limousines conduit par un chauffeur.");
+        System.out.println("2. Afficher caractéristiques des trajets.");
+        System.out.println("3. Quitter.");
     }
 
     private boolean validateFilePaths() {

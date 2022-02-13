@@ -21,6 +21,11 @@ public class LimoArray {
 
     }
 
+
+    public int length() {
+        return limousines.length;
+    }
+
     public void sort() {
 
     }

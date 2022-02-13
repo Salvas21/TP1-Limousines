@@ -16,12 +16,10 @@ public class Driver {
     private final String driverId;
 
     public Driver(String lastName, String firstName, String yearEmployment, String address) {
-
         this.lastName = lastName;
         this.firstName = firstName;
         this.yearEmployment = yearEmployment;
         this.address = address;
-//        this.driverId = "bob";
         this.driverId = generateDriverId();
     }
 

@@ -38,7 +38,7 @@ public class Company {
 
     public Company(String[] filePaths) throws InvalidFilesException, InvalidFilePathException {
         if (filePaths.length != 3) {
-            throw new InvalidFilesException("Number of files required is 3, amount supplied : " + filePaths.length + ".");
+            throw new InvalidFilesException("Le nombre de fichiers requis est de 3, nombre fourni : " + filePaths.length + ".");
         }
 
         driversFilePath = filePaths[0];
@@ -46,7 +46,7 @@ public class Company {
         tripFilePath = filePaths[2];
 
         if (!validateFilePaths()) {
-            throw new InvalidFilePathException("One or more file path is invalid.");
+            throw new InvalidFilePathException("Un ou plusieurs chemins de fichier ne sont pas valides.");
         }
     }
 
@@ -197,7 +197,7 @@ public class Company {
         try {
             drivers.sort();
         } catch (InvalidFormatException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         limos.sort();
         trips.sortByDriverId();

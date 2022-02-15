@@ -18,4 +18,17 @@ public class Limousine {
         this.fuelCapacity = fuelCapacity;
         this.color = color;
     }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    @Override
+    public String toString() {
+        return "Limousine{" +
+                "plate='" + plate + '\'' +
+                ", fuelCapacity=" + fuelCapacity +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

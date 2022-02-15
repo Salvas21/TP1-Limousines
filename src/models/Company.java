@@ -50,7 +50,7 @@ public class Company {
         }
     }
 
-    public void start() throws IOException, InvalidFormatException {
+    public void start() throws IOException {
         readFiles();
         createModels();
         sortModels();
@@ -86,11 +86,17 @@ public class Company {
     }
 
     private void showDriversLimos(String driverId) {
-//        for(int i = 0; i < limos.length(); i++) {
-//            if (limos.getAt(i).) {
-//                System.out.println(limos.getAt(i).toString());
-//            }
-//        };
+        boolean hasFound = false;
+        for(int i = 0; i < trips.getLength(); i++) {
+            Trip tempTrip = trips.getAt(i);
+            if (tempTrip.getId().equalsIgnoreCase(driverId)) {
+                hasFound = true;
+                System.out.println(limos.getAt(limos.find(tempTrip.getPlate())));
+            }
+        }
+        if (!hasFound) {
+            System.out.println("Il n'y a pas de limousines conduite par : " + driverId);
+        }
     }
 
     private int readUserInput() {
@@ -99,7 +105,7 @@ public class Company {
         try {
             option = IntegerParser.parse(new Scanner(System.in).nextLine());
         } catch (exceptions.InvalidFormatException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return option;
     }
@@ -187,9 +193,13 @@ public class Company {
         return (int)lines;
     }
 
-    private void sortModels() throws InvalidFormatException {
-        drivers.sort();
+    private void sortModels() {
+        try {
+            drivers.sort();
+        } catch (InvalidFormatException e) {
+            System.out.println(e);
+        }
         limos.sort();
-        trips.sort();
+        trips.sortByDriverId();
     }
 }

@@ -24,4 +24,24 @@ public class Trip {
         this.endKm = endKm;
         this.plate = plate;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "id='" + id + '\'' +
+                ", departureCity='" + departureCity + '\'' +
+                ", arrivalCity='" + arrivalCity + '\'' +
+                ", startKm=" + startKm +
+                ", endKm=" + endKm +
+                ", plate='" + plate + '\'' +
+                '}';
+    }
 }

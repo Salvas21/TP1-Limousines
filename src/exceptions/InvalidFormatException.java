@@ -10,6 +10,6 @@ package exceptions;
  */
 public class InvalidFormatException extends Exception {
     public InvalidFormatException (String message) {
-        super("Error --: "+message);
+        super("Erreur --: "+message);
     }
 }

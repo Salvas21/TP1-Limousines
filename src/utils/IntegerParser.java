@@ -7,7 +7,7 @@ import exceptions.InvalidFormatException;
  * Package : utils
  * Contributors : Pierik Landry
  * Created : 2022-02-11
- * Last edit : 11:16 p.m.
+ * Last edit : 15:07 p.m.
  * Description : Classe ayant pour but transformer une String en Int
  */
 public class IntegerParser {
@@ -16,8 +16,9 @@ public class IntegerParser {
         try {
             return Integer.parseInt(elementToParse);
         } catch (NumberFormatException e) {
-            throw new InvalidFormatException("Invalid format to parse -> "+elementToParse+".");
+            throw new InvalidFormatException("Format invalide fournit : " + elementToParse + ".");
         }
+
     }
 
 }

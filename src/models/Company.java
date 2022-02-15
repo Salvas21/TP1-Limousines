@@ -76,12 +76,12 @@ public class Company {
         }
 
         if (option == 2) {
-            // ???
+            showTripsAndLimosInfo();
         }
     }
 
     private String askDriverId() {
-        System.out.print("Veuillez entrer le numero du conducteur: ");
+        System.out.print("Veuillez entrer le numéro du conducteur: ");
         return new Scanner(System.in).nextLine();
     }
 
@@ -96,6 +96,16 @@ public class Company {
         }
         if (!hasFound) {
             System.out.println("Il n'y a pas de limousines conduite par : " + driverId);
+        }
+    }
+
+    private void showTripsAndLimosInfo() {
+        System.out.println("\nInformations sur les trajets et les limousines : \n");
+        for (int i = 0; i < trips.getLength(); i++) {
+            Trip trip = trips.getAt(i);
+            Limousine limo = limos.getAt(limos.find(trip.getPlate()));
+            System.out.println("Trajet : " + trip);
+            System.out.println("    Limousine : " + limo + "\n");
         }
     }
 
